@@ -362,7 +362,7 @@ public:
     *   returns bool if has worked successfully
     */
     bool delPart(vector<int> coords) {
-        if (!isAllInSuchPlaces(coords))
+        if (!isAllInSuchPlaces(coords) || coords.capacity == 0)
             return false;
 
         for (int i = 0; i < coords.capacity; i++) {
@@ -373,6 +373,20 @@ public:
         resize(-coords.capacity);
 
         return true;
+    }
+
+    /*
+    *   deletes first element of vector with similar value
+    */
+    bool delByValue(T value) {
+        return del(indexOf(value));
+    }
+
+    /*
+    *   deletes all elements with similar value
+    */
+    bool delAllByValue(T value) {
+        return delPart(indexesOfAll(value));
     }
 
     /*

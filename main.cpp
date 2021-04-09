@@ -43,29 +43,6 @@ vector<double> inputFile() {
     return result;
 }
 
-int getNumberPosition(vector<double>* array, double number) {
-    for (int i = 0; i < array->capacity; i++) {
-        if (array->get(i) == number)
-            return i;
-    }
-
-    cout << "\nthere are no such element\n\n";
-
-    return -2;
-}
-
-bool deleteAll(vector<double>* array, double number) {
-    bool result = false;
-    int c;
-
-    while ((c = array->indexOf(number)) != -1) {
-        array->del(c);
-        result = true;
-    }
-
-    return result;
-}
-
 void echoArray(vector<double>* array) {
     cout << "array echo\n";
     for (int i = 0; i < array->capacity; i++) {
@@ -148,20 +125,32 @@ int main() {
     << "if there is no such elements in vector, throw exception\n";
     randNum = ((double) rand()) / ((double) rand());
     cout << "rand number = " << randNum << endl;
-    if (array.put(number, getNumberPosition(&array, randNum) + 1))
+    position = array.indexOf(randNum);
+    if (position != -1) {
+        array.put(randNum, position);
         cout << "number was putted\n\n";
+    }
+    else {
+        cout << "there is no such element\n\n";
+    }
 
     cout << "input number: ";
     cin >> number;
-    if (array.put(number, getNumberPosition(&array, number) + 1))
+    position = array.indexOf(number);
+    if (position != -1) {
+        array.put(number, position);
         cout << "\nnumber putted\n\n";
+    }
+    else {
+        cout << "there is no such element\n\n";
+    }
     echoArray(&array);
 
     cout << "!!! task 8. delete all elements similar to input"
     << "if there are no such values, throw an exception\n";
     cout << "input number: ";
     cin >> number;
-    if (deleteAll(&array, number))
+    if (array.delAllByValue(number))
         cout << "\nall elements was successfully deleted\n\n";
     else
         cout << "\nthere is no such element\n\n";
