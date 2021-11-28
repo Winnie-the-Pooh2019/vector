@@ -190,7 +190,7 @@ public:
     *   with PLACE number an item
     */
     bool place(vector<T> newItems, int startPlace) {
-        if (startPlace >= 0 && (startPlace + newItems.capacity >= capacity) ? 
+        if (startPlace >= 0 && (startPlace + newItems.capacity >= capacity) ?
         resize(startPlace + newItems.capacity - capacity) : true) {
             insert(newItems, startPlace);
 
@@ -433,7 +433,7 @@ public:
     *   returns TRUE if cell number PLACE exists
     */
     bool isInPlace(int place) {
-        return (place >= 0 && place < capacity) ? true : false;
+        return (place >= 0 && place < capacity);
     }
 
     /*
@@ -554,7 +554,7 @@ private:
     /*
     *   I don't know if this works
     */
-    [[deprecated("I don't recomend to use this ;)")]]
+    [[deprecated("I don't recommend to use this ;)")]]
     bool swich(int place, int delta = 1) {
         if (!(place + 2 * delta - 1 < capacity) || !(place + 2 * delta + 1 > -1) || delta == 0)
             return false;
