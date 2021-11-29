@@ -54,6 +54,9 @@ public:
     }
 
     bool operator == (Vector<T>& other) {
+        if (this == &other)
+            return true;
+
         if (this->amount != other.amount || this->capacity != other.capacity)
             return false;
 
