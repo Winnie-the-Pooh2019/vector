@@ -119,8 +119,6 @@ public:
     friend Vector<T> operator + (Vector<T>& left, Vector<T>& right) {
         Vector<T> temp;
 
-        cout << "la = " << left.amount << " ra = " << right.amount << endl;
-
         if (left.amount != right.amount)
             return temp;
 
