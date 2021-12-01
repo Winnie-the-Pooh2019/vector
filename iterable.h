@@ -5,6 +5,8 @@
 #ifndef COMPLEXNUMBER_ITERATOR_H
 #define COMPLEXNUMBER_ITERABLE_H
 
+#include <cstring>
+
 template<typename T>
 class Collection;
 
@@ -34,6 +36,8 @@ public:
     virtual Iterator<T>& iterator() = 0;
 
     virtual void forEach(void consumer(T&)) = 0;
+
+    virtual string toString() = 0;
 };
 
 

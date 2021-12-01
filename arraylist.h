@@ -7,6 +7,8 @@
 
 #define BUCKET_SIZE 16
 
+#include <cstring>
+#include <strstream>
 #include "collection.h"
 #include "iterable.h"
 
@@ -288,6 +290,19 @@ public:
         }
 
         return *newArray;
+    }
+
+    string toString() override {
+        strstream ss;
+
+        ss << "[";
+
+        for (int i = 0; i < this->amount; i++)
+            ss << values[i] << ((i != this->amount - 1) ? ", " : "");
+
+        ss << "]";
+
+        return ss.str();
     }
 
 private:
